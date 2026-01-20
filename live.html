@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Match Centre | Goshen City FC</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#f2c400;
+  --black:#0b0b0b;
+  --dark:#151515;
+  --panel:#1b1b1b;
+  --muted:#9a9a9a;
+  --green:#2ecc71;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:radial-gradient(circle at top,#222,#000);color:#fff}header{ padding:1.2rem; text-align:center; background:linear-gradient(to bottom,rgba(0,0,0,.8),rgba(0,0,0,.4)); border-bottom:1px solid #222; } header h1{color:var(--gold);font-size:1.2rem;font-weight:800;letter-spacing:1px}
+
+.container{max-width:1100px;margin:auto;padding:1.5rem}
+
+/* HERO MATCH */ .match-hero{ background:linear-gradient(180deg,#111,#000); border:1px solid #2a2a2a; border-radius:22px; padding:1.5rem; box-shadow:0 0 60px rgba(242,196,0,.08); } .hero-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; } .live{ background:var(--green); color:#000; font-size:.65rem; font-weight:800; padding:4px 10px; border-radius:20px; } .minute{font-size:.7rem;color:var(--muted)}
+
+.scoreline{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:1rem; } .team{text-align:center} .team img{width:70px;margin-bottom:.4rem} .team h3{font-size:.75rem} .score{ font-size:2.8rem; font-weight:800; color:var(--gold); }
+
+/* GRID */ .grid{ display:grid; grid-template-columns:1fr 1.3fr 1fr; gap:1.4rem; margin-top:1.8rem; }
+
+.card{ background:var(--panel); border:1px solid #262626; border-radius:18px; padding:1.2rem; } .card h4{ font-size:.7rem; letter-spacing:1px; margin-bottom:.8rem; color:var(--gold); }
+
+/* FIXTURES */ .fixture{display:flex;align-items:center;justify-content:space-between;font-size:.65rem;padding:.45rem 0;border-bottom:1px solid #222} .fixture:last-child{border:none}
+
+/* TABLE */ .table-row{display:grid;grid-template-columns:20px 1fr 30px;font-size:.65rem;padding:.45rem 0;align-items:center} .highlight{color:var(--gold);font-weight:700}
+
+/* EVENTS */ .event{display:flex;align-items:center;gap:10px;font-size:.65rem;padding:.5rem 0;border-bottom:1px solid #222} .event:last-child{border:none} .time{color:var(--gold);font-weight:700}
+
+@media(max-width:900px){ .grid{grid-template-columns:1fr} .score{font-size:2.2rem} } </style>
+
+</head>
+<body><header>
+  <h1>LIVE MATCH CENTRE</h1>
+</header><div class="container">  <section class="match-hero">
+    <div class="hero-top">
+      <span class="live">LIVE</span>
+      <span class="minute">65'</span>
+    </div><div class="scoreline">
+  <div class="team">
+    <img src="teams/goshen.png" alt="Goshen City">
+    <h3>Goshen City FC</h3>
+  </div>
+
+  <div class="score">2 - 1</div>
+
+  <div class="team">
+    <img src="teams/lake-malawi.png" alt="Lake Malawi">
+    <h3>Lake Malawi FC</h3>
+  </div>
+</div>
+
+  </section>  <section class="grid"><!-- UPCOMING -->
+<div class="card">
+  <h4>UPCOMING FIXTURES</h4>
+  <div class="fixture"><span>Lake Shore FC</span><span>Sat</span></div>
+  <div class="fixture"><span>Mafco FC</span><span>Wed</span></div>
+  <div class="fixture"><span>Dedza United</span><span>Sun</span></div>
+  <div class="fixture"><span>Silver Strikers</span><span>Next</span></div>
+</div>
+
+<!-- EVENTS -->
+<div class="card">
+  <h4>KEY EVENTS</h4>
+  <div class="event"><span class="time">12'</span><span>⚽ Chikopa (GOS)</span></div>
+  <div class="event"><span class="time">33'</span><span>⚽ Chisale (LAK)</span></div>
+  <div class="event"><span class="time">54'</span><span>⚽ Banda (GOS)</span></div>
+  <div class="event"><span class="time">61'</span><span>🟨 Phiri</span></div>
+</div>
+
+<!-- TABLE -->
+<div class="card">
+  <h4>LEAGUE STANDINGS</h4>
+  <div class="table-row"><span>1</span><span>Silver Strikers</span><span>32</span></div>
+  <div class="table-row highlight"><span>2</span><span>Goshen City FC</span><span>29</span></div>
+  <div class="table-row"><span>3</span><span>Lake Malawi FC</span><span>27</span></div>
+  <div class="table-row"><span>4</span><span>Mighty Tigers</span><span>24</span></div>
+</div>
+
+  </section>
+</div></body>
+</html>
