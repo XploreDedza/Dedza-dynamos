@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Official Store | Goshen City FC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #f2c400;
+      --black: #0b0b0b;
+      --dark: #141414;
+      --gray: #888;
+      --white: #ffffff;
+      --radius: 18px;
+    }* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+body { background: var(--black); color: var(--white); }
+
+/* HEADER */
+header {
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand { display: flex; align-items: center; gap: 0.8rem; }
+.brand img { width: 36px; height: 36px; }
+.brand h1 { font-size: 1rem; color: var(--yellow); }
+
+.cart {
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--yellow);
+  color: #000;
+  padding: 8px 14px;
+  border-radius: 30px;
+}
+
+/* HERO */
+.shop-hero {
+  padding: 3rem 1.5rem 4rem;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), var(--black)),
+    url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&q=80&w=1200');
+  background-size: cover;
+  background-position: center;
+}
+
+.shop-hero h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--yellow);
+}
+
+.shop-hero p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #ddd;
+  max-width: 320px;
+}
+
+/* FILTERS */
+.filters {
+  display: flex;
+  gap: 10px;
+  padding: 1.2rem;
+  overflow-x: auto;
+}
+
+.filters button {
+  background: var(--dark);
+  border: 1px solid #222;
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.filters .active {
+  background: var(--yellow);
+  color: #000;
+  border-color: var(--yellow);
+}
+
+/* PRODUCTS GRID */
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  padding: 1.2rem;
+}
+
+.product {
+  background: var(--dark);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #222;
+  transition: transform 0.2s ease;
+}
+
+.product:hover { transform: translateY(-4px); }
+
+.product-img {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.product-info { padding: 14px; }
+
+.product-info h4 {
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.price {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--yellow);
+}
+
+.buy-btn {
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+  background: var(--yellow);
+  color: #000;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* FEATURED */
+.featured {
+  margin: 2rem 1.2rem;
+  background: linear-gradient(135deg, #f2c400, #f39c12);
+  border-radius: 22px;
+  color: #000;
+  padding: 2rem;
+}
+
+.featured h3 { font-size: 1.4rem; font-weight: 800; }
+.featured p { font-size: 0.85rem; margin: 10px 0 20px; }
+
+.featured a {
+  background: #000;
+  color: var(--yellow);
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+footer {
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #555;
+  border-top: 1px solid #111;
+  margin-top: 2rem;
+}
+
+  </style>
+</head>
+<body><header>
+  <div class="brand">
+    <img src="goshen-city-logo.png" alt="Goshen City FC">
+    <h1>Official Store</h1>
+  </div>
+  <div class="cart">Cart (0)</div>
+</header><section class="shop-hero">
+  <h2>Wear The Pride.<br>Own The City.</h2>
+  <p>Official Goshen City FC merchandise. Matchday ready.</p>
+</section><section class="filters">
+  <button class="active">All</button>
+  <button>Kits</button>
+  <button>Training</button>
+  <button>Fan Wear</button>
+  <button>Accessories</button>
+</section><section class="products">
+  <div class="product">
+    <div class="product-img" style="background-image:url('products/home-kit.jpg')"></div>
+    <div class="product-info">
+      <h4>Home Kit 2025/26</h4>
+      <div class="price">MWK 45,000</div>
+      <a href="#" class="buy-btn">Add to Cart</a>
+    </div>
+  </div>  <div class="product">
+    <div class="product-img" style="background-image:url('products/away-kit.jpg')"></div>
+    <div class="product-info">
+      <h4>Away Kit 2025/26</h4>
+      <div class="price">MWK 45,000</div>
+      <a href="#" class="buy-btn">Add to Cart</a>
+    </div>
+  </div>  <div class="product">
+    <div class="product-img" style="background-image:url('products/training-top.jpg')"></div>
+    <div class="product-info">
+      <h4>Training Top</h4>
+      <div class="price">MWK 28,000</div>
+      <a href="#" class="buy-btn">Add to Cart</a>
+    </div>
+  </div>  <div class="product">
+    <div class="product-img" style="background-image:url('products/scarf.jpg')"></div>
+    <div class="product-info">
+      <h4>Club Scarf</h4>
+      <div class="price">MWK 12,000</div>
+      <a href="#" class="buy-btn">Add to Cart</a>
+    </div>
+  </div>
+</section><section class="featured">
+  <h3>Matchday Exclusive</h3>
+  <p>Limited edition supporter wear available only this season.</p>
+  <a href="#">Explore Collection</a>
+</section><footer>
+  <p>© 2026 Goshen City FC • Official Merchandise Store</p>
+</footer></body>
+</html>

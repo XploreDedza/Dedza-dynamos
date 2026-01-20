@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fixtures | Goshen City FC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yellow:#f2c400;
+      --black:#0b0b0b;
+      --dark:#161616;
+      --white:#ffffff;
+      --green:#2ecc71;
+      --red:#e74c3c;
+      --gray:#888;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:var(--black);color:var(--white)}/* HEADER */
+header{
+  background:#000;
+  padding:1.2rem 1.4rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #222;
+  position:sticky;
+  top:0;z-index:10
+}
+header h1{font-size:1rem;font-weight:800;color:var(--yellow)}
+header span{font-size:.65rem;color:#aaa}
+
+/* HERO MATCH */
+.next-match{
+  margin:1.4rem;
+  background:linear-gradient(135deg,#f2c400,#f39c12);
+  border-radius:22px;
+  color:#000;
+  padding:1.6rem;
+  position:relative
+}
+.next-match small{font-weight:700;letter-spacing:1px;font-size:.6rem}
+.next-match h2{font-size:1.4rem;font-weight:800;margin:10px 0}
+.teams{display:flex;align-items:center;justify-content:space-between;margin:1rem 0}
+.team{display:flex;flex-direction:column;align-items:center;font-size:.7rem;font-weight:700}
+.team img{width:46px;height:46px;object-fit:contain;margin-bottom:6px}
+.vs{font-size:1.1rem;font-weight:800}
+.match-meta{font-size:.7rem;font-weight:600;margin-top:10px}
+.match-actions{display:flex;gap:10px;margin-top:14px}
+.btn{
+  flex:1;text-align:center;padding:10px;border-radius:10px;
+  font-size:.7rem;font-weight:800;text-decoration:none
+}
+.btn-dark{background:#000;color:var(--yellow)}
+.btn-outline{border:2px solid #000;color:#000}
+
+/* FIXTURE LIST */
+.fixtures{padding:0 1.2rem 2rem}
+.month{margin:1.6rem 0 .8rem;font-size:.75rem;color:var(--yellow);font-weight:800}
+
+.fixture-card{
+  background:var(--dark);
+  border:1px solid #222;
+  border-radius:16px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px
+}
+.fixture-left{display:flex;align-items:center;gap:10px}
+.fixture-left img{width:34px;height:34px;object-fit:contain}
+.fixture-info h4{font-size:.8rem;font-weight:700}
+.fixture-info p{font-size:.65rem;color:#aaa;margin-top:2px}
+
+.fixture-right{text-align:right}
+.status{font-size:.55rem;font-weight:800;padding:4px 8px;border-radius:20px;display:inline-block}
+.upcoming{background:#333;color:#ccc}
+.home{color:var(--yellow)}
+
+footer{
+  padding:2rem 1rem;
+  text-align:center;
+  font-size:.65rem;
+  color:#555;border-top:1px solid #111
+}
+
+  </style>
+</head>
+<body><header>
+  <div>
+    <h1>FIXTURES</h1>
+    <span>2025/26 Premier Division</span>
+  </div>
+</header><section class="next-match">
+  <small>NEXT MATCH</small>
+  <h2>Matchday 17</h2>  <div class="teams">
+    <div class="team">
+      <img src="teams/goshen-city.png" alt="Goshen City">
+      Goshen City
+    </div>
+    <div class="vs">VS</div>
+    <div class="team">
+      <img src="teams/silver-strikers.png" alt="Silver Strikers">
+      Silver Strikers
+    </div>
+  </div>  <div class="match-meta">Saturday • 14 Sept 2026 • 14:30<br>Dedza Stadium (HOME)</div>  <div class="match-actions">
+    <a href="#" class="btn btn-dark">GET TICKETS</a>
+    <a href="#" class="btn btn-outline">MATCH REMINDER</a>
+  </div>
+</section><section class="fixtures">
+  <div class="month">SEPTEMBER 2026</div>  <div class="fixture-card">
+    <div class="fixture-left">
+      <img src="teams/mafco.png">
+      <div class="fixture-info">
+        <h4>Goshen City vs MAFCO FC <span class="home">(H)</span></h4>
+        <p>Sat • 21 Sept • 14:30 • Dedza Stadium</p>
+      </div>
+    </div>
+    <div class="fixture-right">
+      <span class="status upcoming">UPCOMING</span>
+    </div>
+  </div>  <div class="fixture-card">
+    <div class="fixture-left">
+      <img src="teams/blue-eagles.png">
+      <div class="fixture-info">
+        <h4>Blue Eagles vs Goshen City (A)</h4>
+        <p>Wed • 25 Sept • 15:00 • Nankhaka</p>
+      </div>
+    </div>
+    <div class="fixture-right">
+      <span class="status upcoming">UPCOMING</span>
+    </div>
+  </div>  <div class="month">OCTOBER 2026</div>  <div class="fixture-card">
+    <div class="fixture-left">
+      <img src="teams/dedza-united.png">
+      <div class="fixture-info">
+        <h4>Goshen City vs Dedza United <span class="home">(H)</span></h4>
+        <p>Sun • 06 Oct • 14:30 • Dedza Stadium</p>
+      </div>
+    </div>
+    <div class="fixture-right">
+      <span class="status upcoming">UPCOMING</span>
+    </div>
+  </div>
+</section><footer>
+  <p>© 2026 Goshen City FC • Official Fixtures</p>
+</footer></body>
+</html>
