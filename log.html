@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>League Log Table | Goshen City FC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #f2c400;
+      --black: #0b0b0b;
+      --dark-gray: #161616;
+      --white: #ffffff;
+      --red: #e74c3c;
+    }* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+body { background: var(--black); color: var(--white); }
+
+header {
+  padding: 1.2rem;
+  background: #000;
+  border-bottom: 1px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+header img { width: 40px; height: 40px; }
+header h1 { color: var(--yellow); font-size: 1.1rem; }
+
+.container { padding: 1rem; }
+
+.table-wrapper {
+  background: var(--dark-gray);
+  border-radius: 14px;
+  border: 1px solid #222;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.7rem;
+}
+
+thead th {
+  background: #222;
+  color: #aaa;
+  padding: 8px 4px;
+  text-align: center;
+  font-weight: 600;
+}
+
+tbody td {
+  padding: 8px 4px;
+  text-align: center;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.club {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.club img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.highlight {
+  background: rgba(242, 196, 0, 0.15);
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+.relegation {
+  background: rgba(231, 76, 60, 0.15);
+  color: var(--red);
+  font-weight: 700;
+}
+
+footer {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-size: 0.65rem;
+  color: #555;
+  border-top: 1px solid #111;
+  margin-top: 2rem;
+}
+
+  </style>
+</head>
+<body><header>
+  <img src="premiership-logo.png" alt="League Logo">
+  <h1>Premier Division Log Table</h1>
+</header><div class="container">
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Club</th>
+          <th>P</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GF</th>
+          <th>GA</th>
+          <th>GD</th>
+          <th>PTS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="club"><img src="teams/blue-eagles.png">Blue Eagles</td>
+          <td>30</td><td>18</td><td>7</td><td>5</td><td>46</td><td>25</td><td>+21</td><td>61</td>
+        </tr>
+        <tr class="highlight">
+          <td>2</td>
+          <td class="club"><img src="teams/goshen-city.png">Goshen City FC</td>
+          <td>30</td><td>17</td><td>6</td><td>7</td><td>42</td><td>30</td><td>+12</td><td>57</td>
+        </tr>
+        <tr><td>3</td><td class="club"><img src="teams/mighty-tigers.png">Mighty Tigers</td><td>30</td><td>16</td><td>7</td><td>7</td><td>40</td><td>32</td><td>+8</td><td>55</td></tr>
+        <tr><td>4</td><td class="club"><img src="teams/silver-strikers.png">Silver Strikers</td><td>30</td><td>15</td><td>8</td><td>7</td><td>38</td><td>31</td><td>+7</td><td>53</td></tr>
+        <tr><td>5</td><td class="club"><img src="teams/dedza-united.png">Dedza United</td><td>30</td><td>14</td><td>8</td><td>8</td><td>36</td><td>33</td><td>+3</td><td>50</td></tr>
+        <tr><td>6</td><td class="club"><img src="teams/mafco.png">MAFCO FC</td><td>30</td><td>13</td><td>8</td><td>9</td><td>34</td><td>35</td><td>-1</td><td>47</td></tr>
+        <tr><td>7</td><td class="club"><img src="teams/civil.png">Civil Service</td><td>30</td><td>12</td><td>8</td><td>10</td><td>33</td><td>36</td><td>-3</td><td>44</td></tr>
+        <tr><td>8</td><td class="club"><img src="teams/karonga.png">Karonga Utd</td><td>30</td><td>11</td><td>9</td><td>10</td><td>32</td><td>37</td><td>-5</td><td>42</td></tr>
+        <tr><td>9</td><td class="club"><img src="teams/team9.png">Team 9</td><td>30</td><td>10</td><td>9</td><td>11</td><td>30</td><td>38</td><td>-8</td><td>39</td></tr>
+        <tr><td>10</td><td class="club"><img src="teams/team10.png">Team 10</td><td>30</td><td>10</td><td>8</td><td>12</td><td>29</td><td>39</td><td>-10</td><td>38</td></tr>
+        <tr><td>11</td><td class="club"><img src="teams/team11.png">Team 11</td><td>30</td><td>9</td><td>9</td><td>12</td><td>28</td><td>40</td><td>-12</td><td>36</td></tr>
+        <tr><td>12</td><td class="club"><img src="teams/team12.png">Team 12</td><td>30</td><td>9</td><td>8</td><td>13</td><td>27</td><td>41</td><td>-14</td><td>35</td></tr>
+        <tr class="relegation"><td>13</td><td class="club"><img src="teams/team13.png">Team 13</td><td>30</td><td>8</td><td>8</td><td>14</td><td>25</td><td>43</td><td>-18</td><td>32</td></tr>
+        <tr class="relegation"><td>14</td><td class="club"><img src="teams/team14.png">Team 14</td><td>30</td><td>7</td><td>8</td><td>15</td><td>24</td><td>45</td><td>-21</td><td>29</td></tr>
+        <tr class="relegation"><td>15</td><td class="club"><img src="teams/team15.png">Team 15</td><td>30</td><td>6</td><td>7</td><td>17</td><td>22</td><td>48</td><td>-26</td><td>25</td></tr>
+        <tr class="relegation"><td>16</td><td class="club"><img src="teams/team16.png">Team 16</td><td>30</td><td>5</td><td>6</td><td>19</td><td>20</td><td>52</td><td>-32</td><td>21</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div><footer>
+  <p>© 2026 Goshen City FC • Premier Division</p>
+</footer></body>
+</html>
