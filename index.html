@@ -52,17 +52,17 @@
     .mobile-nav a { color: var(--white); text-decoration: none; font-size: 1.1rem; font-weight: 600; padding: 12px 0; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; }
 
     /* HERO */
-    .hero {
-      height: 50vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 2rem;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--black)), 
-                  url('https://images/hero.jpg');
-      background-size: cover;
-      background-position: center;
-    }
+.hero {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--black)), 
+              url('images/hero.jpg'); /* <- local image */
+  background-size: cover;
+  background-position: center;
+}
     .hero h2 { font-size: 2.2rem; color: var(--yellow); line-height: 1.1; text-transform: uppercase; font-weight: 800; }
     .hero-btns { display: flex; gap: 15px; margin-top: 25px; width: 100%; }
     .btn { flex: 1; padding: 14px 0; font-size: 0.85rem; font-weight: 700; text-align: center; text-decoration: none; border-radius: 8px; transition: 0.2s; text-transform: uppercase; }
