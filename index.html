@@ -356,25 +356,68 @@
 </section>
   
   <section id="table" class="section-wrapper">
-    <h3 class="section-title">League Standings</h3>
-    <div class="table-viewport">
-      <table>
-        <thead><tr><th>#</th><th>CLUB</th><th>P</th><th>PTS</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Blue Eagles</td><td>12</td><td>28</td></tr>
-          <tr class="row-active"><td>2</td><td>Goshen City</td><td>12</td><td>25</td></tr>
-          <tr><td>3</td><td>Mighty Tigers</td><td>12</td><td>22</td></tr>
-          <tr><td>4</td><td>Dedza United</td><td>12</td><td>20</td></tr>
-          <tr><td>5</td><td>Silver Strikers</td><td>12</td><td>18</td></tr>
-          <tr><td>6</td><td>MAFCO FC</td><td>12</td><td>17</td></tr>
-          <tr><td>7</td><td>Civil Service</td><td>12</td><td>15</td></tr>
-          <tr><td>8</td><td>Karonga Utd</td><td>12</td><td>14</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <a href="log.html" class="btn-full-log">View Full Log (16 Teams)</a>
-  </section>
+  <h3 class="section-title">League Standings</h3>
+  
+  <div class="table-viewport">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>CLUB</th>
+          <th>P</th>
+          <th>PTS</th>
+        </tr>
+      </thead>
+      <tbody id="leagueTable"></tbody>
+    </table>
+  </div>
 
+  <a href="full-log.html" class="btn-full-log">
+    View Full Log (16 Teams)
+  </a>
+</section>
+
+<!-- Supabase JS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const supabaseUrl = 'https://vhvdddsvcpupnbjqpfoo.supabase.co';
+  const supabaseKey = 'sb_publishable_QriZgyX_XZNDoEQ0CFKOQg_FbtgZcMR';
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+  async function loadLeaguePreview() {
+    const { data, error } = await supabase
+      .from('league_table')        // your Supabase table
+      .select('*')
+      .order('points', { ascending: false })
+      .order('gd', { ascending: false })  // goal difference
+      .order('team', { ascending: true })
+      .limit(8);  // preview top 8 only
+
+    if (error) { console.error('Error loading league table:', error); return; }
+
+    const tableBody = document.getElementById('leagueTable');
+    tableBody.innerHTML = ''; // clear previous rows
+
+    data.forEach((team, index) => {
+      const row = document.createElement('tr');
+
+      if(team.team.toLowerCase() === 'goshen city') {
+        row.classList.add('row-active');
+      }
+
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${team.team}</td>
+        <td>${team.played}</td>
+        <td>${team.points}</td>
+      `;
+
+      tableBody.appendChild(row);
+    });
+  }
+
+  loadLeaguePreview();
+  </script>
   <section class="quick-grid">
   <a href="fixtures.html" class="grid-card">
     <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt="Fixtures Icon">
