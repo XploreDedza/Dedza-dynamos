@@ -1,610 +1,483 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Goshen City Dedza Dynamos FC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --yellow: #f2c400;
-      --black: #0b0b0b;
-      --dark-gray: #161616;
-      --green: #2ecc71;
-      --white: #ffffff;
-      --transition: all 0.3s ease;
-    }
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Goshen City Dedza Dynamos FC</title>  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">  
+  <style>  
+    :root {  
+      --yellow: #f2c400;  
+      --black: #0b0b0b;  
+      --dark-gray: #161616;  
+      --green: #2ecc71;  
+      --white: #ffffff;  
+      --transition: all 0.3s ease;  
+    }  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }  
+body { background: var(--black); color: var(--white); overflow-x: hidden; }  
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: var(--black); color: var(--white); overflow-x: hidden; }
+/* NAVIGATION */  
+header {  
+  background: rgba(11, 11, 11, 0.98);  
+  padding: 1rem 1.2rem;  
+  display: flex;  
+  align-items: center;  
+  justify-content: space-between;  
+  position: sticky;  
+  top: 0;  
+  z-index: 100;  
+  border-bottom: 1px solid #222;  
+}  
 
-    /* NAVIGATION */
-    header {
-      background: rgba(11, 11, 11, 0.98);
-      padding: 1rem 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid #222;
-    }
+.logo-area { display: flex; align-items: center; gap: 0.8rem; }  
+.logo { width: 42px; height: 42px; background: var(--yellow); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 800; border-radius: 8px; font-size: 0.7rem; }  
+.menu-btn { font-size: 1.6rem; color: var(--yellow); cursor: pointer; }  
 
-    .logo-area { display: flex; align-items: center; gap: 0.8rem; }
-    .logo { width: 42px; height: 42px; background: var(--yellow); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 800; border-radius: 8px; font-size: 0.7rem; }
-    .menu-btn { font-size: 1.6rem; color: var(--yellow); cursor: pointer; }
+.mobile-nav {  
+  position: fixed;  
+  top: 0; right: -100%;  
+  width: 85%; height: 100vh;  
+  background: #050505;  
+  padding: 4rem 2rem;  
+  display: flex;  
+  flex-direction: column;  
+  gap: 1.2rem;  
+  transition: var(--transition);  
+  z-index: 101;  
+}  
+.mobile-nav.active { right: 0; }  
+.close-nav { position: absolute; top: 1rem; right: 1.2rem; font-size: 2.5rem; color: var(--yellow); }  
+.mobile-nav a { color: var(--white); text-decoration: none; font-size: 1.1rem; font-weight: 600; padding: 12px 0; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; }  
 
-    .mobile-nav {
-      position: fixed;
-      top: 0; right: -100%;
-      width: 85%; height: 100vh;
-      background: #050505;
-      padding: 4rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      transition: var(--transition);
-      z-index: 101;
-    }
-    .mobile-nav.active { right: 0; }
-    .close-nav { position: absolute; top: 1rem; right: 1.2rem; font-size: 2.5rem; color: var(--yellow); }
-    .mobile-nav a { color: var(--white); text-decoration: none; font-size: 1.1rem; font-weight: 600; padding: 12px 0; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; }
-
-    /* HERO */
+/* HERO */  
 .hero {
-  height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--black)), 
-              url('images/hero.jpg'); /* <- local image */
-  background-size: cover;
-  background-position: center;
-}
-    .hero h2 { font-size: 2.2rem; color: var(--yellow); line-height: 1.1; text-transform: uppercase; font-weight: 800; }
-    .hero-btns { display: flex; gap: 15px; margin-top: 25px; width: 100%; }
-    .btn { flex: 1; padding: 14px 0; font-size: 0.85rem; font-weight: 700; text-align: center; text-decoration: none; border-radius: 8px; transition: 0.2s; text-transform: uppercase; }
-    .btn-filled { background: var(--yellow); color: #000; border: 2px solid var(--yellow); }
-    .btn-outline { background: transparent; color: var(--yellow); border: 2px solid var(--yellow); }
 
-    /* ACTION CARDS */
-    .action-cards {
-      display: flex;
-      gap: 15px;
-      padding: 0 1.2rem;
-      margin-top: -60px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 20px;
-    }
-    .action-cards::-webkit-scrollbar { display: none; }
-    .info-card {
-  flex: 0 0 85%;
-  border-radius: 16px;
-  padding: 25px 20px;
-  text-align: center;
-  scroll-snap-align: center;
-  background-size: cover;       /* Make image cover the card */
-  background-position: center;  /* Center the image */
-  color: #fff;                  /* Make text readable on images */
-  position: relative;
-  overflow: hidden;
+position: relative;
+height: 70vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 2rem;
+background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--black)),
+url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&q=80&w=1000');
+background-size: cover;
+background-position: center;
+}
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 2rem;
+background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--black)),
+url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&q=80&w=1000');
+background-size: cover;
+background-position: center;
+}
+.hero::after {
+content: "";
+position: absolute;
+top: 0;
+left: -100%;
+width: 50%;
+height: 100%;
+background: linear-gradient(120deg, transparent, rgba(242,196,0,0.15), transparent);
+animation: sweep 6s infinite;
 }
 
-/* Optional: add overlay for better text visibility */
-.info-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
-  z-index: 0;
+@keyframes sweep {
+0% { left: -100%; }
+100% { left: 150%; }
+}
+.hero h2 { font-size: clamp(1.8rem, 5vw, 2.2rem); color: var(--yellow); line-height: 1.1; text-transform: uppercase; font-weight: 800; }
+.hero-btns { display: flex; gap: 15px; margin-top: 25px; width: 100%; flex-wrap: wrap; }
+.btn { flex: 1; padding: 14px 0; font-size: 0.85rem; font-weight: 700; text-align: center; text-decoration: none; border-radius: 8px; transition: 0.2s; text-transform: uppercase; }
+.btn-filled { background: var(--yellow); color: #000; border: 2px solid var(--yellow); }
+.btn-outline { background: transparent; color: var(--yellow); border: 2px solid var(--yellow); }
+
+/* ACTION CARDS */  
+.action-cards {  
+  display: flex;  
+  gap: 15px;  
+  padding: 0 1.2rem;  
+  margin-top: -60px;  
+  overflow-x: auto;  
+  scroll-snap-type: x mandatory;  
+  padding-bottom: 20px;  
+}  
+.action-cards::-webkit-scrollbar { display: none; }  
+.info-card {
+
+flex: 0 0 85%;
+background: #111;
+border: 1px solid #222;
+border-radius: 16px;
+padding: 25px 20px;
+text-align: center;
+scroll-snap-align: center;
+transition: var(--transition);
 }
 
-.info-card h5,
-.info-card a {
-  position: relative; /* Bring text above overlay */
-  z-index: 1;
+.info-card:hover {
+transform: translateY(-8px);
+border-color: var(--yellow);
+box-shadow: 0 12px 25px rgba(242,196,0,0.2);
 }
-
-/* Individual card backgrounds */
-.latest-result {
-  background-image: url('images/latest-result.jpg');
+flex: 0 0 85%;
+background: #111;
+border: 1px solid #222;
+border-radius: 16px;
+padding: 25px 20px;
+text-align: center;
+scroll-snap-align: center;
 }
+.highlight-card { border: 2px solid var(--yellow); }
+.info-card h5 { color: var(--yellow); font-size: 0.7rem; letter-spacing: 1.5px; margin-bottom: 15px; }
+.score, .countdown { display: block; font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; }
+.opponent { font-size: 0.8rem; color: #888; margin-bottom: 15px; }
+.card-btn-outline { display: block; padding: 10px; border: 1px solid var(--yellow); color: var(--yellow); text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.8rem; }
+.card-btn-filled { display: block; padding: 10px; background: var(--yellow); color: #000; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: not-allowed; }
 
-.next-match {
-  background-image: url('images/next-match.jpg');
-}
+/* TABLE & GRID */  
+.section-wrapper { padding: 2rem 1.2rem; }  
+.section-title { font-size: 1rem; color: var(--yellow); font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; }  
+.table-viewport { background: var(--dark-gray); border-radius: 12px; max-height: 250px; overflow-y: auto; border: 1px solid #222; }  
+table { width: 100%; border-collapse: collapse; }  
+th { position: sticky; top: 0; background: #222; color: #888; font-size: 0.7rem; padding: 10px; text-align: left; }  
+td { padding: 12px 10px; font-size: 0.85rem; border-bottom: 1px solid #1f1f1f; }  
+.row-active { background: rgba(242, 196, 0, 0.1); color: var(--yellow); font-weight: 700; }  
+.btn-full-log { display: block; width: 100%; background: var(--yellow); color: #000; text-align: center; padding: 14px; text-decoration: none; font-size: 0.9rem; font-weight: 700; border-radius: 8px; margin-top: 1rem; }  
 
-.store {
-  background-image: url('images/store.jpg');
-}
-    .highlight-card { border: 2px solid var(--yellow); }
-    .info-card h5 { color: var(--yellow); font-size: 0.7rem; letter-spacing: 1.5px; margin-bottom: 15px; }
-    .score, .countdown { display: block; font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; }
-    .opponent { font-size: 0.8rem; color: #888; margin-bottom: 15px; }
-    .card-btn-outline { display: block; padding: 10px; border: 1px solid var(--yellow); color: var(--yellow); text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.8rem; }
-    .card-btn-filled { display: block; padding: 10px; background: var(--yellow); color: #000; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.8rem; }
+.quick-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 1.5rem 1.2rem; }  
+.grid-card { background: #161616; padding: 2rem 1rem; border-radius: 16px; text-align: center; text-decoration: none; border: 1px solid #222; }  
+.grid-card h4 { font-size: 0.85rem; color: #fff; margin-top: 10px; }  
+.grid-card img { width: 30px; height: 30px; }  
 
-    /* TABLE & GRID */
-    .section-wrapper { padding: 2rem 1.2rem; }
-    .section-title { font-size: 1rem; color: var(--yellow); font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; }
-    .table-viewport { background: var(--dark-gray); border-radius: 12px; max-height: 250px; overflow-y: auto; border: 1px solid #222; }
-    table { width: 100%; border-collapse: collapse; }
-    th { position: sticky; top: 0; background: #222; color: #888; font-size: 0.7rem; padding: 10px; text-align: left; }
-    td { padding: 12px 10px; font-size: 0.85rem; border-bottom: 1px solid #1f1f1f; }
-    .row-active { background: rgba(242, 196, 0, 0.1); color: var(--yellow); font-weight: 700; }
-    .btn-full-log { display: block; width: 100%; background: var(--yellow); color: #000; text-align: center; padding: 14px; text-decoration: none; font-size: 0.9rem; font-weight: 700; border-radius: 8px; margin-top: 1rem; }
+/* NEWS SECTION */  
+.news-section { padding: 2rem 1.2rem; }  
+.news-card { background: #111; border-radius: 16px; overflow: hidden; border: 1px solid #222; }  
+.news-image { width: 100%; height: 200px; background: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=1000') center/cover; }  
+.news-content { padding: 20px; }  
+.news-content h4 { font-size: 1.1rem; margin-bottom: 10px; line-height: 1.4; }  
+.news-content p { font-size: 0.85rem; color: #aaa; margin-bottom: 20px; }  
+.read-more { color: var(--yellow); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--yellow); padding-bottom: 2px; }  
 
-    .quick-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 1.5rem 1.2rem; }
-    .grid-card { background: #161616; padding: 2rem 1rem; border-radius: 16px; text-align: center; text-decoration: none; border: 1px solid #222; }
-    .grid-card h4 { font-size: 0.85rem; color: #fff; margin-top: 10px; }
-    .grid-card img { width: 30px; height: 30px; }
-  .grid-card {
-  background: #161616;
-  padding: 2rem 1rem;
-  border-radius: 16px;
-  text-align: center;
-  text-decoration: none;
-  border: 1px solid #222;
-  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-}
+/* SOCIAL PULSE WALL STYLES */  
+.fb-pulse-section {  
+  padding: 2rem 1.2rem;  
+  background: #080808;  
+  text-align: center;  
+}  
 
-.grid-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--yellow);
-  box-shadow: 0 8px 20px rgba(242, 196, 0, 0.3);
-}
+.fb-container {  
+  width: 100%;  
+  max-width: 500px;  
+  margin: 0 auto;  
+  background: #111;  
+  border-radius: 12px;  
+  overflow: hidden;  
+  border: 1px solid #222;  
+}  
 
-.grid-card h4 {
-  font-size: 0.85rem;
-  color: #fff;
-  margin-top: 10px;
-  transition: color 0.3s;
-}
+.live-indicator {  
+  color: #ff3b3b;  
+  font-size: 0.7rem;  
+  font-weight: 800;  
+  letter-spacing: 1px;  
+  animation: pulse-red 1.5s infinite;  
+  margin-bottom: 10px;  
+  display: inline-block;  
+}  
 
-.grid-card:hover h4 {
-  color: var(--yellow);
-}
-  .grid-card img {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.3s;
-}
+@keyframes pulse-red {  
+  0%,100%{opacity:1;}  
+  50%{opacity:0.4;}  
+}  
 
-.grid-card:hover img {
-  transform: scale(1.2) rotate(10deg);
-}
+/* PARTNERS SLIDER */  
+.partners-section { padding: 3rem 0; background: #080808; overflow: hidden; }  
+.slider { display: flex; width: calc(200px * 10); animation: scroll 35s linear infinite; }  
+.slide { width: 200px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #444; font-size: 1rem; letter-spacing: 2px; }  
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-200px * 5)); } }  
 
-    /* NEWS SECTION */
-    .news-section { padding: 2rem 1.2rem; }
-    .news-card { background: #111; border-radius: 16px; overflow: hidden; border: 1px solid #222; }
-    .news-image { width: 100%; height: 200px; background: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=1000') center/cover; }
-    .news-content { padding: 20px; }
-    .news-content h4 { font-size: 1.1rem; margin-bottom: 10px; line-height: 1.4; }
-    .news-content p { font-size: 0.85rem; color: #aaa; margin-bottom: 20px; }
-    .read-more { color: var(--yellow); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--yellow); padding-bottom: 2px; }
-  /* SOCIAL PULSE WALL STYLES */
-.pulse-wall { padding: 2rem 1.2rem; background: #080808; }
-
-.pulse-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.live-indicator {
-  color: #ff3b3b;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  animation: pulse-red 1.5s infinite;
-}
-
-@keyframes pulse-red {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
-}
-
-.pulse-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 150px;
-  gap: 10px;
-}
-
-.pulse-item {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #222;
-}
-
-.pulse-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.main-post {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-.pulse-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.9));
-}
-
-.pulse-overlay p { font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
-.post-time { font-size: 0.65rem; color: var(--yellow); font-weight: 700; text-transform: uppercase; }
-
-.follow-btn {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  color: #fff;
-  background: #1877F2; /* Facebook Blue */
-  text-decoration: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-  /* FACEBOOK FEED STYLING */
-.fb-pulse-section {
-  padding: 2rem 1.2rem;
-  background: #080808;
-  text-align: center;
-}
-
-.fb-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-  background: #111;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #222;
-}
-
-/* Reusing your Live Indicator styles */
-.live-indicator {
-  color: #ff3b3b;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  animation: pulse-red 1.5s infinite;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
-@keyframes pulse-red {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
-}
-
-
-
-    /* PARTNERS SLIDER */
-    .partners-section { padding: 3rem 0; background: #080808; overflow: hidden; }
-    .slider { display: flex; width: calc(200px * 10); animation: scroll 20s linear infinite; }
-    .slide { width: 200px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #444; font-size: 1rem; letter-spacing: 2px; }
-    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-200px * 5)); } }
-
-    footer { padding: 2.5rem 1.2rem; text-align: center; background: #000; border-top: 1px solid #111; font-size: 0.75rem; color: #555; }
-  </style>
-</head>
-<body>
-  <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v18.0"></script>
-
-
-  <header>
-    <div class="logo-area">
-      <div class="logo">GCDD</div>
-      <h1>GOSHEN CITY FC</h1>
-    </div>
-    <div class="menu-btn" id="openMenu">☰</div>
-  </header>
-
-  <nav class="mobile-nav" id="mobileNav">
-  <div class="close-nav" id="closeMenu">×</div>
-  <a href="fixtures.html">Fixtures</a>
-  <a href="log.html">League Table</a>
-  <a href="squad.html">The Squad</a>
-  <a href="store.html">Official Shop 🛍️</a>
-  <a href="news.html">XploreDedza News 📰</a>
-  <a href="sponsors.html">Sponsors</a>
-</nav>
-
-  <section class="hero">
-    <h2>ICONIC.<br>DOMINANT.</h2>
-    <p>The pride of Dedza District.</p>
-    <div class="hero-btns">
-  <a href="fixtures.html" class="btn btn-filled">NEXT MATCH</a>
-  <a href="squad.html" class="btn btn-outline">THE SQUAD</a>
-</div>
-  </section>
-<section class="action-cards">
-  <div class="info-card latest-result">
-    <h5>LATEST RESULT</h5>
-    ...
-    <a href="match-report.html" class="card-btn-outline">Full Report</a>
-  </div>
-
-  <div class="info-card highlight-card next-match">
-    <h5>NEXT MATCH</h5>
-    ...
-    <a href="tickets.html" class="card-btn-filled">Get Tickets</a>
-  </div>
-
-  <div class="info-card store">
-    <h5>OFFICIAL STORE</h5>
-    ...
-    <a href="shop.html" class="card-btn-outline">Shop Now</a>
-  </div>
-</section>
+/* FOOTER */  
+.footer-socials {  
+  display: flex;  
+  justify-content: center;  
+  gap: 20px;  
+  margin-bottom: 20px;  
+}  
   
-  <section id="table" class="section-wrapper">
-  <h3 class="section-title">League Standings</h3>
-  
-  <div class="table-viewport">
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>CLUB</th>
-          <th>P</th>
-          <th>PTS</th>
-        </tr>
-      </thead>
-      <tbody id="leagueTable"></tbody>
-    </table>
-  </div>
+.social-icon {  
+  width: 35px;  
+  height: 35px;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  background: #1a1a1a;  
+  border: 1px solid #333;  
+  border-radius: 50%;  
+  transition: var(--transition);  
+  text-decoration: none;  
+}  
 
-  <a href="full-log.html" class="btn-full-log">
-    View Full Log (16 Teams)
-  </a>
-</section>
+.social-icon:hover {  
+  border-color: var(--yellow);  
+  transform: translateY(-3px);  
+}  
 
-<!-- Supabase JS -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const supabaseUrl = 'https://vhvdddsvcpupnbjqpfoo.supabase.co';
-  const supabaseKey = 'sb_publishable_QriZgyX_XZNDoEQ0CFKOQg_FbtgZcMR';
-  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+.social-icon img {  
+  width: 18px;  
+  height: 18px;  
+  filter: invert(1);  
+}  
 
-  async function loadLeaguePreview() {
-    const { data, error } = await supabase
-      .from('league_table')        // your Supabase table
-      .select('*')
-      .order('points', { ascending: false })
-      .order('gd', { ascending: false })  // goal difference
-      .order('team', { ascending: true })
-      .limit(8);  // preview top 8 only
+footer { padding: 2.5rem 1.2rem; text-align: center; background: #000; border-top: 1px solid #111; font-size: 0.75rem; color: #555; }
 
-    if (error) { console.error('Error loading league table:', error); return; }
-
-    const tableBody = document.getElementById('leagueTable');
-    tableBody.innerHTML = ''; // clear previous rows
-
-    data.forEach((team, index) => {
-      const row = document.createElement('tr');
-
-      if(team.team.toLowerCase() === 'goshen city') {
-        row.classList.add('row-active');
-      }
-
-      row.innerHTML = `
-        <td>${index + 1}</td>
-        <td>${team.team}</td>
-        <td>${team.played}</td>
-        <td>${team.points}</td>
-      `;
-
-      tableBody.appendChild(row);
-    });
-  }
-
-  loadLeaguePreview();
-  </script>
-  <section class="quick-grid">
-  <a href="fixtures.html" class="grid-card">
-    <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt="Fixtures Icon">
-    <h4>Fixtures</h4>
-  </a>
-  <a href="log.html" class="grid-card">
-    <img src="https://cdn-icons-png.flaticon.com/512/4222/4222023.png" alt="Standings Icon">
-    <h4>Standings</h4>
-  </a>
-  <a href="store.html" class="grid-card">
-    <img src="https://cdn-icons-png.flaticon.com/512/863/863710.png" alt="Kit Store Icon">
-    <h4>Kit Store</h4>
-  </a>
-  <a href="sponsors.html" class="grid-card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1162/1162901.png" alt="Sponsors Icon">
-    <h4>Sponsors</h4>
-  </a>
-</section>
+  </style>  
+</head>  
+<body>  
+  <div id="fb-root"></div>  
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v18.0"></script>  <header>  
+  <div class="logo-area">  
+    <div class="logo">GCDD</div>  
+    <h1>GOSHEN CITY FC</h1>  
+  </div>  
+  <div class="menu-btn" id="openMenu">☰</div>  
+</header>  <nav class="mobile-nav" id="mobileNav">  
+  <div class="close-nav" id="closeMenu">×</div>  
+  <a href="#">Fixtures</a>  
+  <a href="#table">League Table</a>  
+  <a href="#">The Squad</a>  
+  <a href="#">Official Shop 🛍️</a>  
+  <a href="#">XploreDedza News 📰</a>  
+  <a href="#">Sponsors</a>  
+</nav>  <section class="hero">  
+  <h2>ICONIC.<br>DOMINANT.</h2>  
+  <p>The pride of Dedza District.</p>  
+  <div class="hero-btns">  
+    <a href="#fixtures" class="btn btn-filled">NEXT MATCH</a>  
+    <a href="#squad" class="btn btn-outline">THE SQUAD</a>  
+  </div>  
+</section>  <section class="action-cards">  
+  <div class="info-card">  
+    <h5>LATEST RESULT</h5>  
+    <div class="card-content">  
+      <span class="score" id="latestScore"></span>  
+<p class="opponent" id="latestOpponent"></p>  
+    </div>  
+    <a href="#" class="card-btn-outline">Full Report</a>  
+  </div>  
+  <div class="info-card highlight-card">  
+    <h5>NEXT MATCH</h5>  
+    <div class="card-content">  
+      <span class="countdown" id="matchCountdown"></span>  
+      <p class="opponent">vs FCB Nyasa Big Bullets (A)</p>  
+    </div>  
+    <a href="#" class="card-btn-filled">COMING SOON</a>  
+  </div>  
+  <div class="info-card">  
+    <h5>OFFICIAL STORE</h5>  
+    <div class="card-content">  
+      <p class="store-text">New Home Kit 25/26</p>  
+      <p style="font-size: 0.7rem; color: #555;">Available Now</p>  
+    </div>  
+    <a href="#" class="card-btn-outline">Shop Now</a>  
+  </div>  
+</section>  <section class="quick-grid">  
+  <a href="#" class="grid-card"><img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt=""><h4>Fixtures</h4></a>  
+  <a href="#" class="grid-card"><img src="https://cdn-icons-png.flaticon.com/512/4222/4222023.png" alt=""><h4>Standings</h4></a>  
+  <a href="#" class="grid-card"><img src="https://cdn-icons-png.flaticon.com/512/863/863710.png" alt=""><h4>Kit Store</h4></a>  
+  <a href="#" class="grid-card"><img src="https://cdn-icons-png.flaticon.com/512/1162/1162901.png" alt=""><h4>Sponsors</h4></a>  
+</section>  
+<section id="table" class="section-wrapper">  
+  <h3 class="section-title">League Standings</h3>  
+  <div class="table-viewport">  
+    <table>  
+      <thead>  
+        <tr>  
+          <th>#</th>  
+          <th>CLUB</th>  
+          <th>P</th>  
+          <th>PTS</th>  
+        </tr>  
+      </thead>  
+      <tbody id="leagueTable"></tbody>  
+    </table>  
+  </div>    <a href="full-log.html" class="btn-full-log">  
+    View Full Log (16 Teams)  
+  </a>  
+</section> 
   <section class="news-section">
-    <h3 class="section-title">LATEST FROM THE CAMP</h3>
-    <div class="news-card">
-      <div class="news-image"></div>
-      <div class="news-content">
-        <h4>Team Goshen Secures Thrilling Victory Against Wanderers FC</h4>
-        <p>In a match that kept fans at the edge of their seats, Dedza Dynamos showed pure dominance at home...</p>
-        <a href="news.html" class="read-more">READ THE FULL STORY</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="fb-pulse-section">
-  <div class="pulse-header">
-    <h3 class="section-title">THE SOCIAL PULSE</h3>
-    <span class="live-indicator">● LIVE FEED</span>
-  </div>
-
-  <div class="fb-container">
-    <div class="fb-page" 
-      data-href="https://www.facebook.com/goshencitydedzadynamosfc" 
-      data-tabs="timeline" 
-      data-width="500" 
-      data-height="500" 
-      data-small-header="false" 
-      data-adapt-container-width="true" 
-      data-hide-cover="false" 
-      data-show-facepile="true">
-      <blockquote cite="https://www.facebook.com/goshencitydedzadynamosfc" class="fb-xfbml-parse-ignore">
-        <a href="https://www.facebook.com/goshencitydedzadynamosfc">Goshen City Dedza Dynamos FC</a>
-      </blockquote>
-    </div>
-  </div>
+  <h3 class="section-title">LATEST FROM THE CAMP</h3>
+  <div id="newsContainer"></div>
 </section>
+<section class="fb-pulse-section">  
+  <h3 class="section-title">THE SOCIAL PULSE</h3>  
+  <span class="live-indicator">● LIVE FEED</span>  
+  <div class="fb-container">  
+    <div class="fb-page"   
+      data-href="https://www.facebook.com/goshencitydedzadynamosfc"   
+      data-tabs="timeline"   
+      data-width="500"   
+      data-height="500"   
+      data-small-header="false"   
+      data-adapt-container-width="true"   
+      data-hide-cover="false"   
+      data-show-facepile="true">  
+      <blockquote cite="https://www.facebook.com/goshencitydedzadynamosfc" class="fb-xfbml-parse-ignore">  
+        <a href="https://www.facebook.com/goshencitydedzadynamosfc">Goshen City Dedza Dynamos FC</a>  
+      </blockquote>  
+      <div style="margin-top:20px;">  
+  <a href="fanzone.html" class="btn btn-filled">Join Fan Zone</a>  
+</div>  
+    </div>  
+  </div>  
+</section>  
+  <section class="partners-section">  
+    <div class="slider">  
+      <div class="slide">SPONSOR A</div>  
+      <div class="slide">XPLOREDEDZA</div>  
+      <div class="slide">SPONSOR B</div>  
+      <div class="slide">GOSHEN CITY</div>  
+      <div class="slide">SPONSOR C</div>  
+      <div class="slide">SPONSOR A</div>  
+      <div class="slide">XPLOREDEDZA</div>  
+      <div class="slide">SPONSOR B</div>  
+      <div class="slide">GOSHEN CITY</div>  
+      <div class="slide">SPONSOR C</div>  
+    </div>  
+  </section>    <!-- FOOTER -->    <div class="footer-socials">  
+    <a href="https://facebook.com/dummy" class="social-icon" target="_blank">  
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">  
+    </a>  
+    <a href="https://x.com/dummy" class="social-icon" target="_blank">  
+      <img src="https://cdn-icons-png.flaticon.com/512/5969/5969020.png" alt="X">  
+    </a>  
+    <a href="https://instagram.com/dummy" class="social-icon" target="_blank">  
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">  
+    </a>  
+    <a href="https://tiktok.com/@dummy" class="social-icon" target="_blank">  
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">  
+    </a>  
+  </div>  
+  <!-- MOBILE NAV SCRIPT -->  
+  <script>  
+    const openMenu = document.getElementById('openMenu');  
+    const closeMenu = document.getElementById('closeMenu');  
+    const mobileNav = document.getElementById('mobileNav');  openMenu.onclick = () => {   
+  mobileNav.classList.add('active');   
+  document.body.style.overflow = 'hidden';   
+};  
+closeMenu.onclick = () => {   
+  mobileNav.classList.remove('active');   
+  document.body.style.overflow = 'auto';   
+};
 
-
-  
-  <section class="partners-section">
-    <div class="slider">
-      <div class="slide">SPONSOR A</div>
-      <div class="slide">XPLOREDEDZA</div>
-      <div class="slide">SPONSOR B</div>
-      <div class="slide">GOSHEN CITY</div>
-      <div class="slide">SPONSOR C</div>
-      <div class="slide">SPONSOR A</div>
-      <div class="slide">XPLOREDEDZA</div>
-      <div class="slide">SPONSOR B</div>
-      <div class="slide">GOSHEN CITY</div>
-      <div class="slide">SPONSOR C</div>
-    </div>
-  </section>
-  
-  <style>
-  /* SOCIAL ICONS STYLING */
-  .footer-socials {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .social-icon {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 50%;
-    transition: var(--transition);
-    text-decoration: none;
-  }
-
-  .social-icon:hover {
-    border-color: var(--yellow);
-    transform: translateY(-3px);
-  }
-
-  .social-icon img {
-    width: 18px;
-    height: 18px;
-    filter: invert(1); /* Makes black icons white to match your theme */
-  }
-
-  .footer-text {
-    font-size: 0.75rem;
-    color: #555;
-    line-height: 1.6;
-  }
-</style>
-
-<footer>
-  <div class="footer-socials">
-    <a href="https://facebook.com/dummy" class="social-icon" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
-    </a>
-    <a href="https://x.com/dummy" class="social-icon" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/5969/5969020.png" alt="X">
-    </a>
-    <a href="https://instagram.com/dummy" class="social-icon" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-    </a>
-    <a href="https://tiktok.com/@dummy" class="social-icon" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
-    </a>
-  </div>
-
-  
-
-
-  <footer>
-    <p>© 2026 Goshen City Dedza Dynamos FC</p>
-    <p>Design by Boyd Kachedzula</p>
-  </footer>
-
-  <script>
-    const openMenu = document.getElementById('openMenu');
-    const closeMenu = document.getElementById('closeMenu');
-    const mobileNav = document.getElementById('mobileNav');
-
-    openMenu.onclick = () => { mobileNav.classList.add('active'); document.body.style.overflow = 'hidden'; };
-    closeMenu.onclick = () => { mobileNav.classList.remove('active'); document.body.style.overflow = 'auto'; };
-  </script>
-  <!-- ================== BOYD MODE v3 - SELF-CONTAINED ================== -->
-<span id="boydMode" style="
-  display:inline-block;font-weight:800;font-size:0.85rem;
-  text-transform:uppercase;letter-spacing:1px;
-  cursor:pointer;color:#f5c400;
-  text-shadow:0 0 6px #f5c400,0 0 12px #f5c400,0 0 18px #fff;
-  transition:all 0.25s ease-in-out;position:relative;
+  </script>    <!-- BOYD MODE -->  <span id="boydMode" style="  
+display:inline-block;font-weight:800;font-size:0.85rem;  
+text-transform:uppercase;letter-spacing:1px;  
+cursor:pointer;color:#f5c400;  
+text-shadow:0 0 6px #f5c400,0 0 12px #f5c400,0 0 18px #fff;  
+transition:all 0.25s ease-in-out;position:relative;  
 ">
 Boyd’s Digital Magic — Click Me!
 </span>
 
-<style>
-#boydMode::after{content:"✨";position:absolute;right:-18px;animation:sparkle 1.5s infinite;}
-@keyframes sparkle{0%,100%{opacity:0;transform:translateY(0);}50%{opacity:1;transform:translateY(-2px);}}
-#boydModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;}
-#boydModal .boyd-box{background:radial-gradient(circle at top,#1a1a1a,#000);margin:22% auto;width:90%;max-width:360px;border-radius:16px;box-shadow:0 0 30px rgba(245,196,0,0.4);animation:rise .35s ease;}
-@keyframes rise{from{transform:translateY(25px);opacity:0}to{transform:none;opacity:1}}
-.boyd-header{padding:20px;text-align:center;border-bottom:1px solid rgba(245,196,0,.25);}
-.boyd-header h2{color:#f5c400;margin:0;letter-spacing:2px;}
-.boyd-close{float:right;font-size:22px;color:#777;cursor:pointer;}
-.boyd-actions{padding:20px;}
-.boyd-btn{display:flex;align-items:center;gap:12px;padding:14px;margin-bottom:12px;border-radius:10px;color:#fff;text-decoration:none;font-weight:600;text-transform:uppercase;transition:0.2s;}
-.boyd-btn.wa{background:linear-gradient(135deg,#1ebe5b,#128c7e);}
-.boyd-btn.fb{background:linear-gradient(135deg,#1877f2,#0f4fc4);}
-.boyd-btn.mail{background:linear-gradient(135deg,#444,#111);}
-.icon{width:22px;height:22px;stroke:#fff;filter:drop-shadow(0 0 6px currentColor);}
-.boyd-cta{padding:0 20px 20px;}
-.boyd-cta a{display:block;padding:14px;background:linear-gradient(135deg,#f5c400,#ffae00);text-align:center;font-weight:800;border-radius:12px;color:#000;text-decoration:none;box-shadow:0 0 18px rgba(245,196,0,.6);}
-.boyd-footer{padding:12px;text-align:center;font-size:12px;color:#666;}
-</style>
+  <style>  
+    #boydMode::after{content:"✨";position:absolute;right:-18px;animation:sparkle 1.5s infinite;}  
+    @keyframes sparkle{0%,100%{opacity:0;transform:translateY(0);}50%{opacity:1;transform:translateY(-2px);}}  
+    #boydModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;}  
+    #boydModal .boyd-box{background:radial-gradient(circle at top,#1a1a1a,#000);margin:22% auto;width:90%;max-width:360px;border-radius:16px;box-shadow:0 0 30px rgba(245,196,0,0.4);animation:rise .35s ease;}  
+    @keyframes rise{from{transform:translateY(25px);opacity:0}to{transform:none;opacity:1}}  
+    .boyd-header{padding:20px;text-align:center;border-bottom:1px solid rgba(245,196,0,.25);}  
+    .boyd-header h2{color:#f5c400;margin:0;letter-spacing:2px;}  
+    .boyd-close{float:right;font-size:22px;color:#777;cursor:pointer;}  
+    .boyd-actions{padding:20px;}  
+    .boyd-btn{display:flex;align-items:center;gap:12px;padding:14px;margin-bottom:12px;border-radius:10px;color:#fff;text-decoration:none;font-weight:600;text-transform:uppercase;transition:0.2s;}  
+    .boyd-btn.wa{background:linear-gradient(135deg,#1ebe5b,#128c7e);}  
+    .boyd-btn.fb{background:linear-gradient(135deg,#1877f2,#0f4fc4);}  
+    .boyd-btn.mail{background:linear-gradient(135deg,#444,#111);}  
+    .icon{width:22px;height:22px;stroke:#fff;filter:drop-shadow(0 0 6px currentColor);}  
+    .boyd-cta{padding:0 20px 20px;}  
+    .boyd-cta a{display:block;padding:14px;background:linear-gradient(135deg,#f5c400,#ffae00);text-align:center;font-weight:800;border-radius:12px;color:#000;text-decoration:none;box-shadow:0 0 18px rgba(245,196,0,.6);}  
+    .boyd-footer{padding:12px;text-align:center;font-size:12px;color:#666;}  
+  </style>    <div id="boydModal">  
+    <div class="boyd-box">  
+      <div class="boyd-header">  
+        <span class="boyd-close">&times;</span>  
+        <h2>BOYD MODE</h2>  
+        <p>Direct line to the creator</p>  
+      </div>  
+      <div class="boyd-actions">  
+        <a href="https://wa.me/265XXXXXXXXX" target="_blank" class="boyd-btn wa" data-channel="whatsapp">  
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 15L2 22l5.2-1.4A10 10 0 1 0 12 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> WhatsApp  
+        </a>  
+        <a href="https://facebook.com/your.username" target="_blank" class="boyd-btn fb" data-channel="facebook">  
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h-3a5 5 0 0 0-5 5v3H5v4h2v6h4v-6h3l1-4h-4V8a1 1 0 0 1 1-1h3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Facebook  
+        </a>  
+        <a href="mailto:you@email.com" class="boyd-btn mail" data-channel="email">  
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Email  
+        </a>  
+      </div>  
+      <div class="boyd-cta">  
+        <a href="https://wa.me/265XXXXXXXXX?text=Hi%20Boyd%2C%20I%20need%20a%20website" target="_blank" data-channel="cta">🚀 Start a Project</a>  
+      </div>  
+      <div class="boyd-footer">Digital Systems • Websites • Branding</div>  
+    </div>  
+  </div>  <audio id="boydOpenSound" src="https://cdn.jsdelivr.net/gh/boydkachedzula/boyd-mode/open.mp3" preload="auto"></audio>
+<audio id="boydClickSound" src="https://cdn.jsdelivr.net/gh/boydkachedzula/boyd-mode/click.mp3" preload="auto"></audio>
 
-<div id="boydModal">
-  <div class="boyd-box">
-    <div class="boyd-header">
-      <span class="boyd-close">&times;</span>
-      <h2>BOYD MODE</h2>
-      <p>Direct line to the creator</p>
-    </div>
-    <div class="boyd-actions">
-      <a href="https://wa.me/265XXXXXXXXX" target="_blank" class="boyd-btn wa" data-channel="whatsapp">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 15L2 22l5.2-1.4A10 10 0 1 0 12 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> WhatsApp
-      </a>
-      <a href="https://facebook.com/your.username" target="_blank" class="boyd-btn fb" data-channel="facebook">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h-3a5 5 0 0 0-5 5v3H5v4h2v6h4v-6h3l1-4h-4V8a1 1 0 0 1 1-1h3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Facebook
-      </a>
-      <a href="mailto:you@email.com" class="boyd-btn mail" data-channel="email">
-        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="no
+  <script>  
+    const modal = document.getElementById("boydModal");  
+    const trigger = document.getElementById("boydMode");  
+    const closeBtn = document.querySelector(".boyd-close");  
+    const openSound = document.getElementById("boydOpenSound");  
+    const clickSound = document.getElementById("boydClickSound");  
   
+    trigger.onclick = () => {  
+      modal.style.display = "block";  
+      openSound.play();  
+    };  
+    closeBtn.onclick = () => {  
+      modal.style.display = "none";  
+      clickSound.play();  
+    };  
+    window.onclick = (e) => {  
+      if (e.target == modal) {  
+        modal.style.display = "none";  
+      }  
+    };  
+  </script>    <script>  
+const matchDate = new Date("Feb 25, 2026 15:00:00").getTime();  
+setInterval(() => {  
+  const now = new Date().getTime();  
+  const diff = matchDate - now;  
+  
+  const d = Math.floor(diff / (1000*60*60*24));  
+  const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));  
+  const m = Math.floor((diff % (1000*60*60)) / (1000*60));  
+  
+  document.getElementById("matchCountdown").innerHTML =  
+    `${d}d : ${h}h : ${m}m`;  
+}, 1000);  
+</script>    <script>  
+const latestMatch = {  
+  score: "2 - 0",  
+  opponent: "vs Wanderers (H)"  
+};  
+  
+document.getElementById("latestScore").innerText = latestMatch.score;  
+document.getElementById("latestOpponent").innerText = latestMatch.opponent;  
+</script>  
+<!-- Supabase JS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const { createClient } = supabase;
+
+  const supabaseUrl = 'https://vhvdddsvcpupnbjqpfoo.supabase.co';
+  const supabaseKey = 'sb_publishable_QriZgyX_XZNDoEQ0CFKOQg_FbtgZcMR';
+
+  const client = createClient(supabaseUrl, supabaseKey);
+</script>
+<script>
+async function loadLeaguePreview() {
+
+  const tableBody = do
